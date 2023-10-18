@@ -18,13 +18,13 @@ import { _ProjectHashTable, _msaFiltered } from '../../../store/selectors';
 import { removeMSA, updateMSA } from '../../../store/reducers/msa';
 import StatusBadge from '../../form-components/status-badge.component';
 
-const MSAList = function() {
+const MSAList = function({showHeader = true}) {
 
   const msaList = useSelector(_msaFiltered)
   const projectHashTable = useSelector(_ProjectHashTable)
 
   return <>
-    <HeaderComponent
+    {showHeader && <HeaderComponent
       title="MSAs"
       buttons={[
         <Button component={Link} to="/msa/create" variant="contained"
@@ -34,7 +34,7 @@ const MSAList = function() {
           Add
         </Button>
       ]}
-    />
+    />}
     <Stack gap={2}>
       {
         msaList.map((msa) => <Card key={msa.id}>

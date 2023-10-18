@@ -3,10 +3,10 @@ import { Status } from '../../constants';
 import generateSelectList from '../../helpers/generate-select-list';
 import InputComponent from './core/input.component';
 
-const StatusSelector = function({ label, ...rest }, ref) {
+const StatusSelector = function({ label, list = null, ...rest }, ref) {
   return <InputComponent
     select
-    selectList={generateSelectList(Status)}
+    selectList={list || generateSelectList(Status)}
     label={label || "Status"}
     ref={ref}
     {...rest}

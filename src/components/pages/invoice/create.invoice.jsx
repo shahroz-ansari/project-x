@@ -24,7 +24,7 @@ const InvoiceCreate = function() {
   return <>
     <HeaderComponent title="Add new Invoice" />
 
-    <AddInvoice onSubmit={onSubmit} projectId={projectId} month={month} year={year} />
+    <AddInvoice onSubmit={onSubmit} projectId={projectId && parseInt(projectId)} month={month} year={year} />
   </>
 }
 

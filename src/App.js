@@ -22,7 +22,7 @@ function App() {
       <RouterProvider router={router} />
     </Provider>
     <ToastContainer
-      position="bottom-center"
+      position="top-center"
       autoClose={2000}
       hideProgressBar={false}
       newestOnTop={false}

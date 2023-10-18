@@ -78,11 +78,40 @@ export const deleteDoc = async (store, key) => {
 
       const request = storeInstance.delete(key);
       request.onsuccess = () => {
+        if(store === 'project') deleteProjectData(key)
+        
         resolve(request.result)
       }
       request.onerror = (error) => {
         reject(error)
       }
+    })
+    .catch((error) => {
+      reject(error)
+    })
+  })
+}
+
+export const deleteProjectData = async (projectId) => {
+  return new Promise((resolve, reject) => {
+    db
+    .then((connection) => {
+      ['msa', 'sow', 'timesheet', 'invoice'].forEach((store) => {
+        const storeInstance = connection
+          .transaction(store, 'readwrite')
+          .objectStore(store)
+  
+          storeInstance.openCursor().onsuccess = (event) => {
+          const cursor = event.target.result;
+          if (cursor) {
+            if (cursor.value.projectId === projectId) {
+              cursor.delete();
+            }
+            cursor.continue();
+          }
+        };
+      })
+      resolve(1)
     })
     .catch((error) => {
       reject(error)

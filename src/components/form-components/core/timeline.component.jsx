@@ -32,7 +32,7 @@ const TimelineComponent = function({items, type, onExpand}, ref) {
         [`& .${timelineOppositeContentClasses.root}`]: {
           flex: 0.2,
         },
-        p: 0
+        p: 0,
       }}
       ref={ref}
     >

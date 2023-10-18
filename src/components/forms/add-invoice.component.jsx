@@ -7,6 +7,7 @@ import YearSelector from "../form-components/year-selector.component";
 import StatusSelector from "../form-components/status-selector.component";
 import SwitchComponent from "../form-components/core/switch.component";
 import MonthSelector from "../form-components/month-selector.component";
+import { Pending, Approved } from "../../constants";
 
 const AddInvoice = function ({
   mode = 'add',
@@ -74,7 +75,14 @@ const AddInvoice = function ({
             <Controller
               name="status"
               control={control}
-              render={({ field }) => <StatusSelector errors={errors} label="Status" {...field} />}
+              render={
+                ({ field }) => <StatusSelector 
+                  errors={errors}
+                  label="Status"
+                  list={[{label: Pending, value: Pending}, {label: 'Sent', value: Approved}]}
+                  {...field}
+                />
+              }
               rules={{
                 required: 'Status is required field',
               }}
@@ -84,7 +92,7 @@ const AddInvoice = function ({
             <Controller
               name="sent"
               control={control}
-              render={({ field }) => <SwitchComponent onLabel="Sent" offLabel="Pending to be sent" {...field} />}
+              render={({ field }) => <SwitchComponent onLabel="Approved" offLabel="Approval Pending" {...field} />}
             />
           </Grid>
         </Grid>

@@ -13,7 +13,7 @@ import { Approved } from "../../../constants";
 import { computeIconColor } from "../../../helpers/utils";
 
 
-const TimesheetDashboard = function() {
+const TimesheetDashboard = function({showHeader = true}) {
 
   const dateGenerator = useRef(null)
   const [timelineItems, setTimelineItems] = useState([])
@@ -81,7 +81,7 @@ const TimesheetDashboard = function() {
   }
 
   return <>
-    <HeaderComponent title={'Timesheet timeline'}
+    {showHeader && <HeaderComponent title={'Timesheets'}
       buttons={[
         <Button component={Link} to="/timesheet" variant="outlined"
           startIcon={<TimelineIcon />}
@@ -96,8 +96,7 @@ const TimesheetDashboard = function() {
           Add
         </Button>
       ]}
-    />
-
+    />}
     <TimelineComponent items={timelineItems} type="timesheet" onExpand={expandTimeline} />
   </>
 }

@@ -13,7 +13,7 @@ import { Approved } from "../../../constants";
 import { computeIconColor } from "../../../helpers/utils";
 
 
-const InvoiceDashboard = function() {
+const InvoiceDashboard = function({showHeader = true}) {
 
   const dateGenerator = useRef(null)
   const [timelineItems, setTimelineItems] = useState([])
@@ -73,7 +73,7 @@ const InvoiceDashboard = function() {
   }
 
   return <>
-    <HeaderComponent title={'Invoice timeline'}
+    {showHeader && <HeaderComponent title={'Invoices'}
       buttons={[
         <Button component={Link} to="/invoice" variant="outlined"
           startIcon={<TimelineIcon />}
@@ -88,7 +88,7 @@ const InvoiceDashboard = function() {
           Add
         </Button>
       ]}
-    />
+    />}
 
     <TimelineComponent items={timelineItems} type="invoice" onExpand={expandTimeline} />
   </>

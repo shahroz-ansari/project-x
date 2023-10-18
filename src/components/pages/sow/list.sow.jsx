@@ -18,13 +18,13 @@ import { _ProjectHashTable, _sowFiltered } from '../../../store/selectors';
 import { removeSOW, updateSOW } from '../../../store/reducers/sow';
 import StatusBadge from '../../form-components/status-badge.component';
 
-const SOWList = function() {
+const SOWList = function({showHeader = true}) {
 
   const sowList = useSelector(_sowFiltered)
   const projectHashTable = useSelector(_ProjectHashTable)
 
   return <>
-    <HeaderComponent
+    {showHeader && <HeaderComponent
       title="SOWs"
       buttons={[
         <Button component={Link} to="/sow/create" variant="contained"
@@ -34,7 +34,7 @@ const SOWList = function() {
           Add
         </Button>
       ]}
-    />
+    />}
     <Stack gap={2}>
       {
         sowList.map((sow) => <Card key={sow.id}>

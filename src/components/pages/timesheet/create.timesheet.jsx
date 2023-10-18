@@ -24,7 +24,7 @@ const TimesheetCreate = function() {
   return <>
     <HeaderComponent title="Add new Timesheet" />
 
-    <AddTimesheet onSubmit={onSubmit} projectId={projectId} month={month} year={year} />
+    <AddTimesheet onSubmit={onSubmit} projectId={projectId && parseInt(projectId)} month={month} year={year} />
   </>
 }
 

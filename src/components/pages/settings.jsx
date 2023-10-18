@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Button, Card, CardContent, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, Typography } from "@mui/material";
 
 import HeaderComponent from "../ui-components/header.component";
 
@@ -15,6 +15,8 @@ const Settings = function() {
           Explore Projects
         </Button>
       </CardContent>
+
+      <Box>Last update: Oct 18, 2023</Box>
     </Card>
   </>
 }
